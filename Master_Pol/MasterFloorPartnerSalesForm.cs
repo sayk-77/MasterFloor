@@ -2,11 +2,11 @@
 
 namespace Master_Pol;
 
-public partial class PartnerSale : Form
+public partial class MasterFloorPartnerSalesForm : Form
 {
     private int partnerId;
     
-    public PartnerSale(int partnerId)
+    public MasterFloorPartnerSalesForm(int partnerId)
     {
         InitializeComponent();
         this.partnerId = partnerId;
@@ -18,7 +18,7 @@ public partial class PartnerSale : Form
         try
         {
             var db = new Database.Database(
-                "Host=localhost;Port=5432;Username=postgres;Password=admin;Database=Master_pol");
+                "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=MasterFloorDB");
             List<Sales> salesHistory = db.GetSalesHistory(partnerId);
 
             if (salesHistory == null || salesHistory.Count == 0)
@@ -31,7 +31,9 @@ public partial class PartnerSale : Form
             DataGridView dataGridView = new DataGridView
             {
                 Dock = DockStyle.Fill,
-                AutoGenerateColumns = true
+                AutoGenerateColumns = true,
+                GridColor = Color.FromArgb(244, 232, 211),
+                BackgroundColor = Color.White
             };
 
             dataGridView.DataSource = salesHistory;

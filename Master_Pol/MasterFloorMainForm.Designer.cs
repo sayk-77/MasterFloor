@@ -1,16 +1,14 @@
-﻿using System.ComponentModel;
+﻿namespace Master_Pol;
 
-namespace Master_Pol;
-
-partial class PartnerSale
+partial class MasterFloorMainForm
 {
     /// <summary>
-    /// Required designer variable.
+    ///  Required designer variable.
     /// </summary>
-    private IContainer components = null;
+    private System.ComponentModel.IContainer components = null;
 
     /// <summary>
-    /// Clean up any resources being used.
+    ///  Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
     protected override void Dispose(bool disposing)
@@ -31,16 +29,19 @@ partial class PartnerSale
     /// </summary>
     private void InitializeComponent()
     {
-        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PartnerSale));
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterFloorMainForm));
         SuspendLayout();
         // 
-        // PartnerSale
+        // MasterFloorMainForm
         // 
-        AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+        AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         ClientSize = new System.Drawing.Size(800, 450);
+        FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
         Icon = ((System.Drawing.Icon)resources.GetObject("$this.Icon"));
-        Text = "История продаж";
+        Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+        StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+        Text = "Мастер Пол";
         ResumeLayout(false);
     }
 

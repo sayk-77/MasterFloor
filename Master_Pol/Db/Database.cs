@@ -27,7 +27,7 @@ public class Database
                         SELECT 
                             p.id, 
                             p.partner_type, 
-                            p.partner_name, 
+                            p.name, 
                             p.director, 
                             p.email, 
                             p.phone, 
@@ -38,9 +38,9 @@ public class Database
                         FROM 
                             partners p
                         LEFT JOIN 
-                            partner_products pp ON p.id = pp.partner_id
+                            partnerproducts pp ON p.id = pp.partner_id
                         GROUP BY 
-                            p.id, p.partner_type, p.partner_name, p.director, p.email, p.phone, p.address, p.inn, p.rating";
+                            p.id, p.partner_type, p.name, p.director, p.email, p.phone, p.address, p.inn, p.rating";
 
                     using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                     {
@@ -55,7 +55,7 @@ public class Database
                                 {
                                     Id = Convert.ToInt32(reader["id"]),
                                     Partner_Type = reader["partner_type"].ToString(),
-                                    Partner_Name = reader["partner_name"].ToString(),
+                                    Partner_Name = reader["name"].ToString(),
                                     Director = reader["director"].ToString(),
                                     Email = reader["email"].ToString(),
                                     Phone = reader["phone"].ToString(),
@@ -96,7 +96,7 @@ public class Database
         using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
         {
             string query = @"
-            INSERT INTO partners (partner_name, partner_type, rating, address, director, phone, email, inn)
+            INSERT INTO partners (name, partner_type, rating, address, director, phone, email, inn)
             VALUES (@name, @type, @rating, @address, @director, @phone, @email, @inn)";
 
             using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
@@ -130,7 +130,7 @@ public class Database
         {
             string query = @"
             UPDATE partners 
-            SET partner_name = @name, partner_type = @type, rating = @rating, 
+            SET name = @name, partner_type = @type, rating = @rating, 
                 address = @address, director = @director, phone = @phone, email = @email, inn = @inn
             WHERE id = @id";
 
@@ -167,11 +167,11 @@ public class Database
         {
             string query = @"
             SELECT 
-                p.product_name AS product_name, 
+                p.name AS product_name, 
                 pp.quantity AS quantity, 
                 pp.sale_date AS sale_date
             FROM 
-                partner_products pp
+                partnerproducts pp
             JOIN 
                 products p ON pp.product_id = p.id
             WHERE 
@@ -200,6 +200,7 @@ public class Database
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex);
                     MessageBox.Show("Ошибка при получении истории продаж: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return null;
                 }
@@ -217,7 +218,7 @@ public class Database
         {
             connection.Open();
             
-            string productQuery = "SELECT coefficient FROM product_types WHERE id = @product_type_id";
+            string productQuery = "SELECT coefficient FROM producttypes WHERE id = @product_type_id";
             using (NpgsqlCommand productCommand = new NpgsqlCommand(productQuery, connection))
             {
                 productCommand.Parameters.AddWithValue("product_type_id", productTypeId);
@@ -230,7 +231,7 @@ public class Database
 
                 decimal productCoefficient = Convert.ToDecimal(productCoefficientObj);
                 
-                string materialQuery = "SELECT defect_percentage FROM material_types WHERE id = @material_type_id";
+                string materialQuery = "SELECT defect_percentage FROM materialtypes WHERE id = @material_type_id";
                 using (NpgsqlCommand materialCommand = new NpgsqlCommand(materialQuery, connection))
                 {
                     materialCommand.Parameters.AddWithValue("material_type_id", materialTypeId);

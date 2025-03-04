@@ -2,7 +2,7 @@
 
 namespace Master_Pol;
 
-public partial class PartnerEdit : Form
+public partial class MasterFloorPartnerEditForm : Form
 {
     private Partners partner;
     private bool isEditMode;
@@ -17,13 +17,13 @@ public partial class PartnerEdit : Form
     private TextBox emailTextBox;
     private TextBox InnTextBox;
 
-    public PartnerEdit()
+    public MasterFloorPartnerEditForm()
     {
         InitializeComponents();
         isEditMode = false;
     }
 
-    public PartnerEdit(Partners partnerEdit)
+    public MasterFloorPartnerEditForm(Partners partnerEdit)
     {
         InitializeComponents();
         this.partner = partnerEdit;
@@ -36,6 +36,9 @@ public partial class PartnerEdit : Form
     {
         this.Text = isEditMode ? "Редактирование партнера" : "Добавление партнера";
         this.Size = new System.Drawing.Size(400, 380);
+        this.StartPosition = FormStartPosition.CenterScreen;
+        this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        this.Icon = new Icon("MasterFloor.ico");
         
         Label nameLabel = new Label { Text = "Наименование:", Location = new System.Drawing.Point(20, 20) };
         nameTextBox = new TextBox { Location = new System.Drawing.Point(120, 20), Width = 200 };
@@ -62,8 +65,8 @@ public partial class PartnerEdit : Form
         Label innLabel = new Label { Text = "ИНН:", Location = new System.Drawing.Point(20, 230) };
         InnTextBox = new TextBox { Location = new System.Drawing.Point(120, 230), Width = 200 };
 
-        Button saveButton = new Button { Text = "Сохранить", Location = new System.Drawing.Point(120, 280), Width = 100 };
-        Button cancelButton = new Button { Text = "Отмена", Location = new System.Drawing.Point(230, 280), Width = 100 };
+        Button saveButton = new Button { Text = "Сохранить", Location = new System.Drawing.Point(120, 280), Width = 100, Height = 30, BackColor = Color.FromArgb(103, 186, 128), ForeColor = Color.White};
+        Button cancelButton = new Button { Text = "Отмена", Location = new System.Drawing.Point(230, 280), Width = 100, Height = 30, BackColor = Color.FromArgb(103, 186, 128), ForeColor = Color.White};
         
         this.Controls.Add(nameLabel);
         this.Controls.Add(nameTextBox);
@@ -142,13 +145,13 @@ public partial class PartnerEdit : Form
 
     private void AddPartner(string name, string type, int rating, string address, string director, string phone, string email, long inn)
     {
-        var db = new Database.Database("Host=localhost;Port=5432;Username=postgres;Password=admin;Database=Master_pol");
+        var db = new Database.Database("Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=MasterFloorDB");
         db.AddPartner(name, type, rating, address, director, phone, email, inn);
     }
 
     private void UpdatePartner()
     {
-        var db = new Database.Database("Host=localhost;Port=5432;Username=postgres;Password=admin;Database=Master_pol");
+        var db = new Database.Database("Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=MasterFloorDB");
         
         if (!long.TryParse(InnTextBox.Text, out long inn))
         {
