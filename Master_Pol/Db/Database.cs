@@ -79,7 +79,7 @@ public class Database
             return partners;
         }
     
-    private int CalculateDiscountPercentage(int totalQuantity)
+    public int CalculateDiscountPercentage(int totalQuantity)
     {
         if (totalQuantity < 10000)
             return 0; 
@@ -91,7 +91,7 @@ public class Database
             return 15; 
     }
     
-    public void AddPartner(string name, string type, int rating, string address, string director, string phone, string email, long inn)
+    public int AddPartner(string name, string type, int rating, string address, string director, string phone, string email, long inn)
     {
         using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
         {
@@ -114,17 +114,19 @@ public class Database
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
+                    return 1;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("Ошибка при добавлении партнера " + ex.Message);
+                    return 0;
                 }
             }
         }
     }
     
     
-    public void UpdatePartner(int id, string name, string type, int rating, string address, string director, string phone, string email, long inn)
+    public int UpdatePartner(int id, string name, string type, int rating, string address, string director, string phone, string email, long inn)
     {
         using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
         {
@@ -150,10 +152,12 @@ public class Database
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
+                    return 1;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка при обновлении партнера: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine(ex.Message);
+                    return 0;
                 }
             }
         }

@@ -17,8 +17,6 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyProductAttribute("Master_Pol")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Master_Pol")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
-[assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
-[assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
 
 // Создано классом WriteCodeFragment MSBuild.
 
