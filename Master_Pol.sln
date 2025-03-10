@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Master_Pol", "Master_Pol\Master_Pol.csproj", "{3663226E-9223-4D1E-AA10-DC84FDD1D9B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterFloorTest", "MasterFloorTest\MasterFloorTest.csproj", "{7B1270B7-D5A4-466E-8332-6A134FB6C5B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{3663226E-9223-4D1E-AA10-DC84FDD1D9B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3663226E-9223-4D1E-AA10-DC84FDD1D9B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3663226E-9223-4D1E-AA10-DC84FDD1D9B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B1270B7-D5A4-466E-8332-6A134FB6C5B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B1270B7-D5A4-466E-8332-6A134FB6C5B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B1270B7-D5A4-466E-8332-6A134FB6C5B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B1270B7-D5A4-466E-8332-6A134FB6C5B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

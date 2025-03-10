@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Master_Pol")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e5f35409e3ada1e80d34b5cbba0158e7f218f5b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+826e65214945548bba2c903c9059e97a0a69fb96")]
 [assembly: System.Reflection.AssemblyProductAttribute("Master_Pol")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Master_Pol")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
